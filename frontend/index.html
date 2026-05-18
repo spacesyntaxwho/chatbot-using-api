@@ -1,16 +1,159 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Chatbot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cool Chatbot</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#0f172a;
+            overflow:hidden;
+        }
+
+        .background{
+            position:absolute;
+            width:100%;
+            height:100%;
+            background:
+            radial-gradient(circle at top left,#2563eb,transparent 30%),
+            radial-gradient(circle at bottom right,#9333ea,transparent 30%);
+            filter: blur(80px);
+        }
+
+        .chat-container{
+            position:relative;
+            width:400px;
+            height:600px;
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(20px);
+            border-radius:20px;
+            padding:20px;
+            display:flex;
+            flex-direction:column;
+            box-shadow:0 0 30px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            color:white;
+            text-align:center;
+            margin-bottom:15px;
+        }
+
+        .chat-box{
+            flex:1;
+            overflow-y:auto;
+            padding-right:5px;
+        }
+
+        .message{
+            margin:10px 0;
+            padding:12px;
+            border-radius:12px;
+            animation:fadeIn 0.3s ease;
+            color:white;
+        }
+
+        .user{
+            background:#2563eb;
+            margin-left:50px;
+        }
+
+        .bot{
+            background:#1e293b;
+            margin-right:50px;
+        }
+
+        .input-area{
+            display:flex;
+            gap:10px;
+            margin-top:15px;
+        }
+
+        input{
+            flex:1;
+            padding:12px;
+            border:none;
+            border-radius:10px;
+            outline:none;
+            background:rgba(255,255,255,0.1);
+            color:white;
+        }
+
+        input::placeholder{
+            color:#cbd5e1;
+        }
+
+        button{
+            padding:12px 18px;
+            border:none;
+            border-radius:10px;
+            background:#2563eb;
+            color:white;
+            cursor:pointer;
+            transition:0.3s;
+            font-weight:bold;
+        }
+
+        button:hover{
+            background:#1d4ed8;
+            transform:scale(1.05);
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+                transform:translateY(10px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        .chat-box::-webkit-scrollbar{
+            width:5px;
+        }
+
+        .chat-box::-webkit-scrollbar-thumb{
+            background:#475569;
+            border-radius:10px;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<h2>My Chatbot</h2>
+<div class="background"></div>
 
-<div id="chat"></div>
+<div class="chat-container">
 
-<input type="text" id="input" placeholder="Type message..." />
-<button onclick="sendMessage()">Send</button>
+    <h1>🤖 AI Chatbot</h1>
+
+    <div id="chat" class="chat-box"></div>
+
+    <div class="input-area">
+        <input type="text" id="input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
 
 <script src="script.js"></script>
 
